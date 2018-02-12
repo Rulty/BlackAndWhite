@@ -1,5 +1,6 @@
 package BlackAndWhite;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -14,15 +15,16 @@ public class Window extends JFrame {
 	private JMenu menu, submenu;
 	private JMenuItem menuItem;
 	
+	private ImagePanel imagePanel = new ImagePanel();
 	
 	
 	
 	public Window() {
-		this.setSize(800,400);
+		this.setSize(1200,800);
 		this.setTitle("Black And White");
 		this.setLocationRelativeTo(null);
 	    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
+	    //imagePanel.setBackground(Color.BLACK);
 		//construct the menuBar
 		menuBar = new JMenuBar();
 		//First Menu
@@ -50,15 +52,14 @@ public class Window extends JFrame {
 		menu.add(menuItem);
 		
 		this.setJMenuBar(menuBar);
-		
+		this.setContentPane(imagePanel);
 		this.setVisible(true);
 	}
 	
 	//Listener for Open Menu
 	class OpenListener implements ActionListener{
 		public void actionPerformed(ActionEvent arg0) {
-			new ImagePanel();
-			
+			imagePanel.setImage();	
 		}
 		
 	}
