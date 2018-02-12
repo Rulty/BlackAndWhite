@@ -13,6 +13,7 @@ public class Window extends JFrame {
 	private JMenuBar menuBar;
 	private JMenu menu;
 	private JMenuItem menuItem;
+	private JMenuItem saveItem;
 	private ImagePanel imagePanel = new ImagePanel();
 	private JButton button = new JButton("Black And White !");
 	private JPanel container = new JPanel();
@@ -48,10 +49,11 @@ public class Window extends JFrame {
 		menuItem.addActionListener(new OpenListener());
 		menu.add(menuItem);
 		
-		menuItem = new JMenuItem("Save");
-		menuItem.getAccessibleContext().setAccessibleDescription("Save the Image");
-		menuItem.addActionListener(new SaveListener());
-		menu.add(menuItem);	
+		saveItem = new JMenuItem("Save");
+		saveItem.getAccessibleContext().setAccessibleDescription("Save the Image");
+		saveItem.addActionListener(new SaveListener());
+		saveItem.setEnabled(false);
+		menu.add(saveItem);	
 		
 		menu.addSeparator();
 		
@@ -71,6 +73,7 @@ public class Window extends JFrame {
 		public void actionPerformed(ActionEvent arg0) {
 			if(imagePanel.setImage()) {
 				button.setVisible(true);
+				saveItem.setEnabled(true);
 			}
 			
 		}
@@ -79,7 +82,7 @@ public class Window extends JFrame {
 	//Listener for Save Menu
 	class SaveListener implements ActionListener{
 		public void actionPerformed(ActionEvent arg0) {
-			
+			imagePanel.saveImage();
 		}
 		
 	}

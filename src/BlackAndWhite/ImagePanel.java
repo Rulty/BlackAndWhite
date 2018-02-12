@@ -22,7 +22,7 @@ public class ImagePanel extends JPanel {
 	
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		//open the image
+		
 		
 	    
 	    
@@ -40,6 +40,7 @@ public class ImagePanel extends JPanel {
 		//Check user have chosen a file
 		if(returnVal == JFileChooser.APPROVE_OPTION) {
 			path = fileChooser.getSelectedFile().getPath();	
+			//open the image
 			try{
 				image = ImageIO.read(new File(path));
 			}catch(IOException e) {
@@ -56,6 +57,18 @@ public class ImagePanel extends JPanel {
 			fileChooser.setSelectedFile(null);
 			return false;
 		}
+	}
+	public void saveImage() {
+			int returnval = fileChooser.showSaveDialog(null);
+			if(returnval == JFileChooser.APPROVE_OPTION) {
+				String savePath = fileChooser.getSelectedFile().getPath();
+				try {
+					ImageIO.write(image, "jpg", new File(savePath));
+				}catch(IOException e) {
+					JOptionPane.showMessageDialog(this, "Error in Saving the file", "Error", JOptionPane.ERROR_MESSAGE);
+				}
+				
+			}
 	}
 	
 	public void setImageBlackAndWhite() {
