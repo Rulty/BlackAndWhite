@@ -1,15 +1,23 @@
 package BlackAndWhite;
-
+/**
+ * @author Rulty
+ *
+ */
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 import javax.swing.*;
 
 
 public class Window extends JFrame {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JMenuBar menuBar;
 	private JMenu menu;
 	private JMenuItem menuItem;
@@ -18,6 +26,7 @@ public class Window extends JFrame {
 	private JButton button = new JButton("Black And White !");
 	private JPanel container = new JPanel();
 	private JPanel containerButtons = new JPanel();
+	String[] extension = {"jpg", "jpeg", "png", "gif", "tiff", "svg"};
 	
 	
 	public Window() {
@@ -66,16 +75,20 @@ public class Window extends JFrame {
 		this.setJMenuBar(menuBar);
 		this.setContentPane(container);
 		this.setVisible(true);
+		Utils.initFileChooser("Images", extension);
+		
 	}
 	
 	//Listener for Open Menu
 	class OpenListener implements ActionListener{
 		public void actionPerformed(ActionEvent arg0) {
-			if(imagePanel.setImage()) {
+			try{
+				imagePanel.setImage(); 
 				button.setVisible(true);
 				saveItem.setEnabled(true);
+			}catch(IOException e) {
+				
 			}
-			
 		}
 		
 	}

@@ -4,8 +4,8 @@
 package BlackAndWhite;
 
 /**
- * @author victor
- *
+ * @author Rulty
+ * @version 1.0
  */
 public class BlackAndWhite {
 
