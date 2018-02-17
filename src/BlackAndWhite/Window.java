@@ -26,7 +26,7 @@ public class Window extends JFrame {
 	private JButton button = new JButton("Black And White !");
 	private JPanel container = new JPanel();
 	private JPanel containerButtons = new JPanel();
-	String[] extension = {"jpg", "jpeg", "png", "gif", "tiff", "svg"};
+	String[] extension = {"jpg", "jpeg", "png"};
 	
 	
 	public Window() {
